@@ -26,6 +26,7 @@
 #include <QDebug>
 
 #include "mainwindow.h"
+#include "webview.h"
 
 int main(int argc, char *argv[])
 {
@@ -33,7 +34,9 @@ int main(int argc, char *argv[])
 
     MainWindow window;
     window.show();
-    window.adjustSizes();
+
+//    WebView webview;
+//    webview.show();
 
     return app.exec();
 }

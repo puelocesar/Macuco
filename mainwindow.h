@@ -3,6 +3,7 @@
 
 #include <QtGui/QMainWindow>
 #include "webview.h"
+#include "errorbox.h"
 
 #include <QLabel>
 
@@ -20,7 +21,7 @@ private:
     // mainWindow components
     WebView* webView;
     QLabel* loadingLabel;
-    QFrame* errorBox;
+    ErrorBox* errorBox;
 
     // reimplement resize event to adapt layout
     void resizeEvent(QResizeEvent* event);
@@ -31,6 +32,9 @@ private slots:
 
     //called when a "loading page" is finished
     void hideLoading(bool success);
+
+    //reload the page
+    void reload();
 };
 
 #endif // MAINWINDOW_H

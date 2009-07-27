@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/images" >
         <file>loading.gif</file>
+        <file>Delete.png</file>
     </qresource>
 </RCC>
