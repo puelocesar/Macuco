@@ -12,16 +12,25 @@ class MainWindow : public QMainWindow {
 public:
     explicit MainWindow(QWidget *parent = 0);
     virtual ~MainWindow();
+
+    //manually adapt layout to new size
     void adjustSizes();
 
 private:
+    // mainWindow components
     WebView* webView;
     QLabel* loadingLabel;
+    QFrame* errorBox;
+
+    // reimplement resize event to adapt layout
     void resizeEvent(QResizeEvent* event);
 
 private slots:
+    //called when a "loading page" is started
     void showLoading();
-    void hideLoading();
+
+    //called when a "loading page" is finished
+    void hideLoading(bool success);
 };
 
 #endif // MAINWINDOW_H

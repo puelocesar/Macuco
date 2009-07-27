@@ -12,9 +12,7 @@ WebView::WebView(QWidget *parent)
 
     setPage((QWebPage*) webPage);
     setUrl(QUrl("http://mail.google.com"));
-    setWindowTitle("GMail Mobile App");
-
-    setZoomFactor(1.25);
+    setWindowTitle("Macuco");
 }
 
 // reimplement from Flickable
