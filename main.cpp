@@ -35,8 +35,5 @@ int main(int argc, char *argv[])
     MainWindow window;
     window.show();
 
-//    WebView webview;
-//    webview.show();
-
     return app.exec();
 }

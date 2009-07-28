@@ -8,6 +8,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     //same size of the N810 screen
     setGeometry(200,200,800,480);
 
+    setWindowIcon(QIcon(":/images/macuco.png"));
+    setWindowTitle("Macuco Gmail Client");
+
     webView = new WebView(this);
 
     QMovie* loadingMovie = new QMovie(":/images/loading.gif");

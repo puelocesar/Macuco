@@ -2,5 +2,6 @@
     <qresource prefix="/images" >
         <file>loading.gif</file>
         <file>Delete.png</file>
+        <file>macuco.png</file>
     </qresource>
 </RCC>
