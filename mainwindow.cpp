@@ -23,9 +23,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     errorBox = new ErrorBox(this);
     errorBox->hide();
 
-    connect(webView->page(), SIGNAL(loadStarted()), this, SLOT(showLoading()));
-    connect(webView->page(), SIGNAL(loadFinished(bool)), this, SLOT(hideLoading(bool)));
+    connect(webView, SIGNAL(loadStarted()), this, SLOT(showLoading()));
+    connect(webView, SIGNAL(urlChanged(QUrl)), this, SLOT(changeUrl(QUrl)));
+    connect(webView, SIGNAL(loadFinished(bool)), this, SLOT(hideLoading(bool)));
     connect(errorBox->getRetryButton(), SIGNAL(clicked()), this, SLOT(reload()));
+
+    connect(webView->page()->networkAccessManager(), SIGNAL(finished(QNetworkReply*)), this, SLOT(finishedRequest(QNetworkReply*)));
 }
 
 MainWindow::~MainWindow()
@@ -34,23 +37,33 @@ MainWindow::~MainWindow()
 
 void MainWindow::showLoading()
 {
+    hideOverlayOnPage();
     loadingLabel->show();
+}
+
+void MainWindow::changeUrl(QUrl url)
+{
+    currentUrl = url;
 }
 
 void MainWindow::hideLoading(bool success)
 {
     loadingLabel->hide();
+    hideOverlayOnPage();
 
     if (success) {
         errorBox->hide();
     } else {
+        showOverlayOnPage();
         errorBox->show();
     }
 }
 
 void MainWindow::reload()
 {
-    webView->reload();
+    webView->load(currentUrl);
+    errorBox->hide();
+    hideOverlayOnPage();
 }
 
 void MainWindow::adjustSizes()
@@ -64,4 +77,32 @@ void MainWindow::resizeEvent(QResizeEvent* event)
 {
     adjustSizes();
     QWidget::resizeEvent(event);
+}
+
+void MainWindow::showOverlayOnPage()
+{
+    QString script =
+           "newDiv = document.createElement(\"div\");"
+           "newDiv = document.createElement(\"div\");"
+           "newDiv.innerHTML = \"<div id='divOverlay' style='width: 100%; height: 100%; background: white;"
+           "position: absolute; top: 0; left: 0; opacity: 0.8'></div>\";"
+           "my_div = document.getElementById(\"body\");"
+           "document.body.appendChild(newDiv);";
+
+    webView->page()->mainFrame()->evaluateJavaScript(script);
+}
+
+void MainWindow::hideOverlayOnPage()
+{
+    QString script = "node = document.getElementById(\"divOverlay\");"
+                     "node.parentNode.removeChild(node);";
+
+    webView->page()->mainFrame()->evaluateJavaScript(script);
+}
+
+void MainWindow::finishedRequest(QNetworkReply* reply)
+{
+    qDebug() << reply->errorString();
+
+    reply->reset()
 }
