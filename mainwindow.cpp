@@ -102,7 +102,6 @@ void MainWindow::hideOverlayOnPage()
 
 void MainWindow::finishedRequest(QNetworkReply* reply)
 {
-    qDebug() << reply->errorString();
-
-    reply->reset()
+    if (reply->error() != QNetworkReply::NoError)
+    	qDebug() << reply->errorString();
 }
