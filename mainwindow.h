@@ -28,6 +28,9 @@ private:
     // reimplement resize event to adapt layout
     void resizeEvent(QResizeEvent* event);
 
+    //intercepts close event
+    void closeEvent(QCloseEvent *event);
+
     //white overlay behind the error message
     void showOverlayOnPage();
     void hideOverlayOnPage();

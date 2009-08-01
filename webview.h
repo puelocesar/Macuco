@@ -13,6 +13,7 @@ class WebView : public QWebView, public Flickable
 
 public:
     WebView(QWidget *parent = 0);
+    WebPage* webPage;
 
 protected:
     // reimplement from Flickable
@@ -27,9 +28,6 @@ protected:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
-
-private:
-    WebPage* webPage;
 };
 
 #endif // WEBVIEW_H

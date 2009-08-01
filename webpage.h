@@ -1,10 +1,12 @@
 #ifndef WEBPAGE_H
 #define WEBPAGE_H
 
+#include "networkcookiejar.h"
+
 class WebPage : public QWebPage
 {
 private:
-    //NetworkAccessManager* nam;
+    NetworkCookieJar* cookieJar;
 
 public:
     QString userAgentForUrl(const QUrl &url ) const{
@@ -14,7 +16,14 @@ public:
 
     WebPage(){
         QWebPage::QWebPage();
-        //setNetworkAccessManager(nam); // para salvar o cookieJar
+
+        cookieJar = new NetworkCookieJar;
+        networkAccessManager()->setCookieJar(cookieJar);
+    }
+
+    void saveCookies()
+    {
+        cookieJar->saveCookies();
     }
 
 public slots:

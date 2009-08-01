@@ -28,7 +28,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     connect(webView, SIGNAL(loadFinished(bool)), this, SLOT(hideLoading(bool)));
     connect(errorBox->getRetryButton(), SIGNAL(clicked()), this, SLOT(reload()));
 
-    connect(webView->page()->networkAccessManager(), SIGNAL(finished(QNetworkReply*)), this, SLOT(finishedRequest(QNetworkReply*)));
+    connect(webView->page()->networkAccessManager(), SIGNAL(finished(QNetworkReply*)), 
+            this, SLOT(finishedRequest(QNetworkReply*)));
 }
 
 MainWindow::~MainWindow()
@@ -79,8 +80,15 @@ void MainWindow::resizeEvent(QResizeEvent* event)
     QWidget::resizeEvent(event);
 }
 
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    webView->webPage->saveCookies();
+    event->accept();
+}
+
 void MainWindow::showOverlayOnPage()
 {
+    //TODO: is there a better way to put a transparent overlay on the screen?
     QString script =
            "newDiv = document.createElement(\"div\");"
            "newDiv = document.createElement(\"div\");"
