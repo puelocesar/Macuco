@@ -39,6 +39,7 @@ MainWindow::~MainWindow()
 void MainWindow::showLoading()
 {
     hideOverlayOnPage();
+    loadingLabel->movie()->start();
     loadingLabel->show();
 }
 
@@ -49,6 +50,7 @@ void MainWindow::changeUrl(QUrl url)
 
 void MainWindow::hideLoading(bool success)
 {
+    loadingLabel->movie()->stop();
     loadingLabel->hide();
     hideOverlayOnPage();
 
