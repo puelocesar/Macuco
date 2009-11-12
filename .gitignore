@@ -1,0 +1,7 @@
+src/moc_*
+*.o
+Makefile
+src/Makefile
+src/macuco
+src/qrc_resources.cpp
+src/ui_errorbox.h
