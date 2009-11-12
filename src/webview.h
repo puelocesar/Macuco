@@ -22,12 +22,12 @@ protected:
     // reimplement from Flickable
     virtual void setScrollOffset(const QPoint &offset);
 
-protected:
-
     void keyReleaseEvent(QKeyEvent *event);
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
+
+    QWebView* createWindow ( QWebPage::WebWindowType type );
 };
 
 #endif // WEBVIEW_H

@@ -42,6 +42,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::showLoading()
 {
+    errorBox->hide();
     hideOverlayOnPage();
     loadingLabel->show();
 }

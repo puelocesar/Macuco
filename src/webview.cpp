@@ -1,4 +1,5 @@
 #include "webview.h"
+#include "mainwindow.h"
 
 WebView::WebView(QWidget *parent)
         : QWebView(parent) {
@@ -18,7 +19,8 @@ WebView::WebView(QWidget *parent)
 // reimplement from Flickable
 QPoint WebView::scrollOffset() const {
     QWebFrame *frame = page()->mainFrame();
-    return QPoint(0, frame->evaluateJavaScript("window.scrollY").toInt());
+    return QPoint(frame->evaluateJavaScript("window.scrollX").toInt(),
+                  frame->evaluateJavaScript("window.scrollY").toInt());
 }
 
 // reimplement from Flickable
@@ -57,4 +59,14 @@ void WebView::mouseReleaseEvent(QMouseEvent *event) {
         return;
 
     QWebView::mouseReleaseEvent(event);
+}
+
+QWebView*  WebView::createWindow ( QWebPage::WebWindowType type )
+{
+    Q_UNUSED(type);
+
+    MainWindow* new_window = new MainWindow();
+    new_window->show();
+
+    return new_window->webView;
 }

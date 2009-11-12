@@ -19,9 +19,10 @@ public:
 
     void keyPressEvent(QKeyEvent *event);
 
+    WebView* webView;
+
 private:
     // mainWindow components
-    WebView* webView;
     QLabel* loadingLabel;
     ErrorBox* errorBox;
 
