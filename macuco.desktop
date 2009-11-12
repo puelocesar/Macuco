@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Macuco Gmail Client
+Categories=GTK;Network;
+Exec=/usr/bin/macuco
+Icon=macuco
+StartupWMClass=macuco
+X-Window-Icon=macuco
+X-HildonDesk-ShowInToolbar=true
+X-Osso-Type=application/x-executable
+Terminal=false

@@ -1,7 +1,7 @@
 <RCC>
     <qresource prefix="/images" >
-        <file>loading.gif</file>
         <file>Delete.png</file>
         <file>macuco.png</file>
+        <file>spinner.png</file>
     </qresource>
 </RCC>

@@ -1,5 +1,4 @@
 #include "mainwindow.h"
-#include <QMovie>
 
 #include <QDebug>
 
@@ -11,16 +10,19 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     setWindowIcon(QIcon(":/images/macuco.png"));
     setWindowTitle("Macuco Gmail Client");
 
+    // the zoom values are chosen to be like in Mozilla Firefox 3
+    zoomLevels << 30 << 50 << 67 << 80 << 90;
+    zoomLevels << 100;
+    zoomLevels << 110 << 120 << 133 << 150 << 170 << 200 << 240 << 300;
+
+    currentZoom = 100;
+
     webView = new WebView(this);
     webView->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
     webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal, Qt::ScrollBarAlwaysOff);
 
-    QMovie* loadingMovie = new QMovie(":/images/loading.gif");
-    loadingMovie->start();
-
     loadingLabel = new QLabel(this);
-    loadingLabel->setMovie(loadingMovie);
-    loadingLabel->setScaledContents(true);
+    loadingLabel->setPixmap( QPixmap(QString::fromUtf8(":/images/spinner.png")) );
 
     errorBox = new ErrorBox(this);
     errorBox->hide();
@@ -41,7 +43,6 @@ MainWindow::~MainWindow()
 void MainWindow::showLoading()
 {
     hideOverlayOnPage();
-    loadingLabel->movie()->start();
     loadingLabel->show();
 }
 
@@ -52,7 +53,6 @@ void MainWindow::changeUrl(QUrl url)
 
 void MainWindow::hideLoading(bool success)
 {
-    loadingLabel->movie()->stop();
     loadingLabel->hide();
     hideOverlayOnPage();
 
@@ -116,4 +116,39 @@ void MainWindow::finishedRequest(QNetworkReply* reply)
 {
     if (reply->error() != QNetworkReply::NoError)
     	qDebug() << reply->errorString();
+}
+
+void MainWindow::zoomIn()
+{
+    disableWebkitAutoSize();
+
+    int i = zoomLevels.indexOf(currentZoom);
+    if (i < zoomLevels.count() - 1)
+        currentZoom = zoomLevels[i + 1];
+
+    webView->setZoomFactor(qreal(currentZoom)/100.0);
+}
+
+void MainWindow::zoomOut()
+{
+    disableWebkitAutoSize();
+
+    int i = zoomLevels.indexOf(currentZoom);
+    if (i > 0)
+        currentZoom = zoomLevels[i - 1];
+
+    webView->setZoomFactor(qreal(currentZoom)/100.0);
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{
+    if (event->key() == Qt::Key_F7)
+	zoomIn();
+    else if (event->key () == Qt::Key_F8)
+	zoomOut();
+}
+
+void MainWindow::disableWebkitAutoSize()
+{
+    webView->page()->mainFrame()->evaluateJavaScript("document.body.style.WebkitTextSizeAdjust = 'auto'");
 }

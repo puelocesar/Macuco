@@ -17,6 +17,8 @@ public:
     //manually adapt layout to new size
     void adjustSizes();
 
+    void keyPressEvent(QKeyEvent *event);
+
 private:
     // mainWindow components
     WebView* webView;
@@ -24,6 +26,9 @@ private:
     ErrorBox* errorBox;
 
     QUrl currentUrl;
+
+    QVector<int> zoomLevels;
+    int currentZoom;
 
     // reimplement resize event to adapt layout
     void resizeEvent(QResizeEvent* event);
@@ -34,6 +39,11 @@ private:
     //white overlay behind the error message
     void showOverlayOnPage();
     void hideOverlayOnPage();
+
+    void zoomIn();
+    void zoomOut();
+
+    void disableWebkitAutoSize();
 
 private slots:
     //called when a "loading page" is started
