@@ -1,0 +1,57 @@
+Source: macuco
+Section: user/network
+Priority: optional 
+Maintainer: Paulo Cesar <puelocesar@gmail.com>
+XSBC-Original-Maintainer: Paulo Cesar <puelocesar@gmail.com>
+Build-Depends: debhelper (>= 5), libqt4-dev
+Standards-Version: 3.7.3
+
+Package: macuco
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, hildon-application-manager
+Description: A simple mobile browser that emulates iPhone's Gmail behavior
+XB-Maemo-Icon-26:
+ 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

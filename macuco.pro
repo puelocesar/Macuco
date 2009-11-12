@@ -1,17 +1,9 @@
-TEMPLATE = app
-SOURCES = flickable.cpp \
-    main.cpp \
-    webview.cpp \
-    mainwindow.cpp \
-    errorbox.cpp \
-    networkcookiejar.cpp
-HEADERS = flickable.h \
-    webview.h \
-    mainwindow.h \
-    webpage.h \
-    errorbox.h \
-    networkcookiejar.h
-QT += network \
-    webkit
-FORMS += errorbox.ui
-RESOURCES += resources.qrc
+QMAKEVERSION = $$[QMAKE_VERSION]
+ISQT4 = $$find(QMAKEVERSION, ^[2-9])
+isEmpty( ISQT4 ) {
+error("Use the qmake include with Qt4.4 or greater, on Debian that is qmake-qt4");
+}
+
+TEMPLATE = subdirs
+SUBDIRS  = src
+
