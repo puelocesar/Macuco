@@ -4,6 +4,7 @@
 #include <QtGui/QMainWindow>
 #include "webview.h"
 #include "errorbox.h"
+#include "toolbar.h"
 
 #include <QLabel>
 
@@ -25,6 +26,7 @@ private:
     // mainWindow components
     QLabel* loadingLabel;
     ErrorBox* errorBox;
+    Toolbar* toolbar;
 
     QUrl currentUrl;
 

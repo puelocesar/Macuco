@@ -4,4 +4,5 @@ Makefile
 src/Makefile
 src/macuco
 src/qrc_resources.cpp
+macuco.pro.user
 src/ui_errorbox.h

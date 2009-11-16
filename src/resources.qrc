@@ -3,5 +3,6 @@
         <file>Delete.png</file>
         <file>macuco.png</file>
         <file>spinner.png</file>
+        <file>toolbar/back.png</file>
     </qresource>
 </RCC>

@@ -27,6 +27,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     errorBox = new ErrorBox(this);
     errorBox->hide();
 
+    toolbar = new Toolbar(this);
+    toolbar->show();
+
     connect(webView, SIGNAL(loadStarted()), this, SLOT(showLoading()));
     connect(webView, SIGNAL(urlChanged(QUrl)), this, SLOT(changeUrl(QUrl)));
     connect(webView, SIGNAL(loadFinished(bool)), this, SLOT(hideLoading(bool)));
@@ -77,6 +80,7 @@ void MainWindow::adjustSizes()
     webView->setGeometry(0, 0, width(), height()); //webview cover the entire window
     loadingLabel->setGeometry( width()/2 - 45, height()/2 - 45, 90, 90); //put the label on the center
     errorBox->setGeometry( width()/2 - 150, height()/2 - 75, 300, 150); //put the error box on the center
+    toolbar->setGeometry( 0, 450, 800, 30 );
 }
 
 void MainWindow::resizeEvent(QResizeEvent* event)
