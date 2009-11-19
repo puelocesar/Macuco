@@ -4,5 +4,8 @@
         <file>macuco.png</file>
         <file>spinner.png</file>
         <file>toolbar/back.png</file>
+        <file>toolbar/foward.png</file>
+        <file>toolbar/reload.png</file>
+        <file>toolbar/stop.png</file>
     </qresource>
 </RCC>

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading ui file 'toolbar.ui'
 **
-** Created: Sun Nov 15 23:49:02 2009
+** Created: Thu Nov 19 20:01:04 2009
 **      by: Qt User Interface Compiler version 4.5.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -36,7 +36,7 @@ public:
     {
         if (Toolbar->objectName().isEmpty())
             Toolbar->setObjectName(QString::fromUtf8("Toolbar"));
-        Toolbar->resize(540, 30);
+        Toolbar->resize(540, 40);
         Toolbar->setAutoFillBackground(true);
         Toolbar->setStyleSheet(QString::fromUtf8("QToolButton {\n"
 "color: black;\n"
@@ -44,23 +44,25 @@ public:
 "border-radius: 4px;\n"
 "background: qradialgradient(cx: 0.3, cy: -0.4,\n"
 "fx: 0.3, fy: -0.4,\n"
-"radius: 1.35, stop: 0 #fff, stop: 1 #aaa);\n"
+"radius: 1.35, stop: 0 #fff, stop: 1 #d2d2d2);\n"
 "}\n"
 "QToolButton:hover {\n"
 "background: qradialgradient(cx: 0.3, cy: -0.4,\n"
 "fx: 0.3, fy: -0.4,\n"
-"radius: 1.35, stop: 0 #fff, stop: 1 #bbb);\n"
+"radius: 1.35, stop: 0 #fff, stop: 1 #e2e2e2);\n"
 "}\n"
 "QToolButton:pressed {\n"
 "background: qradialgradient(cx: 0.4, cy: -0.1,\n"
 "fx: 0.4, fy: -0.1,\n"
-"radius: 1.35, stop: 0 #fff, stop: 1 #ddd);\n"
+"radius: 1.35, stop: 0 #fff, stop: 1 #c2c2c2);\n"
 "}\n"
-"\n"
 "QLineEdit {\n"
 "color: black;\n"
 "border: 1px solid #888;\n"
 "border-radius: 4px;\n"
+"}\n"
+"Toolbar {\n"
+"background: rgb(144, 144, 144);\n"
 "}"));
         horizontalLayout = new QHBoxLayout(Toolbar);
         horizontalLayout->setSpacing(6);
@@ -71,28 +73,50 @@ public:
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/images/toolbar/back.png"), QSize(), QIcon::Normal, QIcon::Off);
         backButton->setIcon(icon);
+        backButton->setIconSize(QSize(24, 24));
 
         horizontalLayout->addWidget(backButton);
 
         fowardButton = new QToolButton(Toolbar);
         fowardButton->setObjectName(QString::fromUtf8("fowardButton"));
         fowardButton->setAutoFillBackground(false);
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/images/toolbar/foward.png"), QSize(), QIcon::Normal, QIcon::Off);
+        fowardButton->setIcon(icon1);
+        fowardButton->setIconSize(QSize(24, 24));
         fowardButton->setToolButtonStyle(Qt::ToolButtonIconOnly);
 
         horizontalLayout->addWidget(fowardButton);
 
         reloadButton = new QToolButton(Toolbar);
         reloadButton->setObjectName(QString::fromUtf8("reloadButton"));
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/images/toolbar/reload.png"), QSize(), QIcon::Normal, QIcon::Off);
+        reloadButton->setIcon(icon2);
+        reloadButton->setIconSize(QSize(24, 24));
 
         horizontalLayout->addWidget(reloadButton);
 
         inputAddress = new QLineEdit(Toolbar);
         inputAddress->setObjectName(QString::fromUtf8("inputAddress"));
+        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(24);
+        sizePolicy.setHeightForWidth(inputAddress->sizePolicy().hasHeightForWidth());
+        inputAddress->setSizePolicy(sizePolicy);
+        inputAddress->setMinimumSize(QSize(0, 28));
 
         horizontalLayout->addWidget(inputAddress);
 
         favButton = new QToolButton(Toolbar);
         favButton->setObjectName(QString::fromUtf8("favButton"));
+        QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(24);
+        sizePolicy1.setHeightForWidth(favButton->sizePolicy().hasHeightForWidth());
+        favButton->setSizePolicy(sizePolicy1);
+        favButton->setMinimumSize(QSize(0, 28));
+        favButton->setIconSize(QSize(16, 24));
 
         horizontalLayout->addWidget(favButton);
 
@@ -106,9 +130,9 @@ public:
     {
         Toolbar->setWindowTitle(QApplication::translate("Toolbar", "Dialog", 0, QApplication::UnicodeUTF8));
         backButton->setText(QString());
-        fowardButton->setText(QApplication::translate("Toolbar", ">", 0, QApplication::UnicodeUTF8));
-        reloadButton->setText(QApplication::translate("Toolbar", "R", 0, QApplication::UnicodeUTF8));
-        favButton->setText(QApplication::translate("Toolbar", ":)", 0, QApplication::UnicodeUTF8));
+        fowardButton->setText(QString());
+        reloadButton->setText(QString());
+        favButton->setText(QApplication::translate("Toolbar", "<", 0, QApplication::UnicodeUTF8));
         Q_UNUSED(Toolbar);
     } // retranslateUi
 

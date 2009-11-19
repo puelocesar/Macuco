@@ -80,7 +80,7 @@ void MainWindow::adjustSizes()
     webView->setGeometry(0, 0, width(), height()); //webview cover the entire window
     loadingLabel->setGeometry( width()/2 - 45, height()/2 - 45, 90, 90); //put the label on the center
     errorBox->setGeometry( width()/2 - 150, height()/2 - 75, 300, 150); //put the error box on the center
-    toolbar->setGeometry( 0, 450, 800, 30 );
+    toolbar->setGeometry( 0, 442, 800, 38 );
 }
 
 void MainWindow::resizeEvent(QResizeEvent* event)
