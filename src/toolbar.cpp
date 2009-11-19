@@ -17,6 +17,8 @@ Toolbar::~Toolbar()
 
 void Toolbar::paintEvent ( QPaintEvent * event )
 {
+    Q_UNUSED(event);
+
     QRectF rectangle(-5, 0, 810, 38);
 
     QPainter painter(this);

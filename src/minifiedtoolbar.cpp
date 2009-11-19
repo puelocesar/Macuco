@@ -17,8 +17,9 @@ MinifiedToolbar::~MinifiedToolbar()
 
 void MinifiedToolbar::paintEvent ( QPaintEvent * event )
 {
-    QRectF rectangle(-15, 0, 43, 43);
+    Q_UNUSED(event);
 
+    QRectF rectangle(-15, 0, 43, 43);
     QPainter painter(this);
 
     QLinearGradient linearGradient(0, 0, 0, 20);
