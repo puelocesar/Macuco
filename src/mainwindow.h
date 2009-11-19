@@ -5,6 +5,7 @@
 #include "webview.h"
 #include "errorbox.h"
 #include "toolbar.h"
+#include "minifiedtoolbar.h"
 
 #include <QLabel>
 
@@ -27,6 +28,7 @@ private:
     QLabel* loadingLabel;
     ErrorBox* errorBox;
     Toolbar* toolbar;
+    MinifiedToolbar* miniToolbar;
 
     QUrl currentUrl;
 
@@ -63,6 +65,10 @@ private slots:
 
     //request
     void finishedRequest(QNetworkReply* reply);
+
+    //toolbar visibility control
+    void showToolbar();
+    void hideToolbar();
 };
 
 #endif // MAINWINDOW_H

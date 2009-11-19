@@ -2,6 +2,7 @@
 #define TOOLBAR_H
 
 #include <QtGui/QWidget>
+#include <QToolButton>
 
 namespace Ui {
     class Toolbar;
@@ -13,6 +14,8 @@ class Toolbar : public QWidget {
 public:
     Toolbar(QWidget *parent = 0);
     ~Toolbar();
+
+    QToolButton *getHideToolbarButton();
 
 protected:
     void paintEvent ( QPaintEvent * event );

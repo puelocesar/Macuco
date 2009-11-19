@@ -6,18 +6,21 @@ SOURCES = flickable.cpp \
     mainwindow.cpp \
     errorbox.cpp \
     networkcookiejar.cpp \
-    toolbar.cpp
+    toolbar.cpp \
+    minifiedtoolbar.cpp
 HEADERS = flickable.h \
     webview.h \
     mainwindow.h \
     webpage.h \
     errorbox.h \
     networkcookiejar.h \
-    toolbar.h
+    toolbar.h \
+    minifiedtoolbar.h
 QT += network \
     webkit
 FORMS += errorbox.ui \
-    toolbar.ui
+    toolbar.ui \
+    minifiedtoolbar.ui
 RESOURCES += resources.qrc
 unix { 
     # VARIABLES

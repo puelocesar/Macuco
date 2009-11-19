@@ -1,23 +1,23 @@
-#include "toolbar.h"
-#include "ui_toolbar.h"
+#include "minifiedtoolbar.h"
+#include "ui_minifiedtoolbar.h"
 
 #include <QPainter>
 
-Toolbar::Toolbar(QWidget *parent) :
+MinifiedToolbar::MinifiedToolbar(QWidget *parent) :
     QWidget(parent),
-    m_ui(new Ui::Toolbar)
+    m_ui(new Ui::MinifiedToolbar)
 {
     m_ui->setupUi(this);
 }
 
-Toolbar::~Toolbar()
+MinifiedToolbar::~MinifiedToolbar()
 {
     delete m_ui;
 }
 
-void Toolbar::paintEvent ( QPaintEvent * event )
+void MinifiedToolbar::paintEvent ( QPaintEvent * event )
 {
-    QRectF rectangle(-5, 0, 810, 38);
+    QRectF rectangle(-15, 0, 43, 43);
 
     QPainter painter(this);
 
@@ -28,10 +28,10 @@ void Toolbar::paintEvent ( QPaintEvent * event )
 
     painter.setPen( QColor(90, 90, 90) );
     painter.setBrush(linearGradient);
-    painter.drawRect(rectangle);
+    painter.drawRoundedRect(rectangle, 8.0, 8.0);
 }
 
-QToolButton* Toolbar::getHideToolbarButton()
+QToolButton* MinifiedToolbar::getShowToolbarButton()
 {
-    return m_ui->hideToolbarButton;
+    return m_ui->showToolbarButton;
 }

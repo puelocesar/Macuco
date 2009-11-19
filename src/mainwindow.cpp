@@ -28,7 +28,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     errorBox->hide();
 
     toolbar = new Toolbar(this);
-    toolbar->show();
+    toolbar->hide();
+
+    miniToolbar = new MinifiedToolbar(this);
+    miniToolbar->show();
 
     connect(webView, SIGNAL(loadStarted()), this, SLOT(showLoading()));
     connect(webView, SIGNAL(urlChanged(QUrl)), this, SLOT(changeUrl(QUrl)));
@@ -37,6 +40,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 
     connect(webView->page()->networkAccessManager(), SIGNAL(finished(QNetworkReply*)), 
             this, SLOT(finishedRequest(QNetworkReply*)));
+
+    connect(miniToolbar->getShowToolbarButton(), SIGNAL(clicked()), this, SLOT(showToolbar()));
+    connect(toolbar->getHideToolbarButton(), SIGNAL(clicked()), this, SLOT(hideToolbar()));
 }
 
 MainWindow::~MainWindow()
@@ -81,6 +87,7 @@ void MainWindow::adjustSizes()
     loadingLabel->setGeometry( width()/2 - 45, height()/2 - 45, 90, 90); //put the label on the center
     errorBox->setGeometry( width()/2 - 150, height()/2 - 75, 300, 150); //put the error box on the center
     toolbar->setGeometry( 0, 442, 800, 38 );
+    miniToolbar->setGeometry( 0, 442, 30, 38 );
 }
 
 void MainWindow::resizeEvent(QResizeEvent* event)
@@ -156,4 +163,16 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 void MainWindow::disableWebkitAutoSize()
 {
     webView->page()->mainFrame()->evaluateJavaScript("document.body.style.WebkitTextSizeAdjust = 'auto'");
+}
+
+void MainWindow::showToolbar()
+{
+    toolbar->show();
+    miniToolbar->hide();
+}
+
+void MainWindow::hideToolbar()
+{
+    toolbar->hide();
+    miniToolbar->show();
 }

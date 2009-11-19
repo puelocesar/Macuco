@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading ui file 'toolbar.ui'
 **
-** Created: Thu Nov 19 20:01:04 2009
+** Created: Thu Nov 19 21:27:40 2009
 **      by: Qt User Interface Compiler version 4.5.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -30,7 +30,7 @@ public:
     QToolButton *fowardButton;
     QToolButton *reloadButton;
     QLineEdit *inputAddress;
-    QToolButton *favButton;
+    QToolButton *hideToolbarButton;
 
     void setupUi(QWidget *Toolbar)
     {
@@ -108,17 +108,17 @@ public:
 
         horizontalLayout->addWidget(inputAddress);
 
-        favButton = new QToolButton(Toolbar);
-        favButton->setObjectName(QString::fromUtf8("favButton"));
+        hideToolbarButton = new QToolButton(Toolbar);
+        hideToolbarButton->setObjectName(QString::fromUtf8("hideToolbarButton"));
         QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(24);
-        sizePolicy1.setHeightForWidth(favButton->sizePolicy().hasHeightForWidth());
-        favButton->setSizePolicy(sizePolicy1);
-        favButton->setMinimumSize(QSize(0, 28));
-        favButton->setIconSize(QSize(16, 24));
+        sizePolicy1.setHeightForWidth(hideToolbarButton->sizePolicy().hasHeightForWidth());
+        hideToolbarButton->setSizePolicy(sizePolicy1);
+        hideToolbarButton->setMinimumSize(QSize(0, 28));
+        hideToolbarButton->setIconSize(QSize(16, 24));
 
-        horizontalLayout->addWidget(favButton);
+        horizontalLayout->addWidget(hideToolbarButton);
 
 
         retranslateUi(Toolbar);
@@ -132,7 +132,7 @@ public:
         backButton->setText(QString());
         fowardButton->setText(QString());
         reloadButton->setText(QString());
-        favButton->setText(QApplication::translate("Toolbar", "<", 0, QApplication::UnicodeUTF8));
+        hideToolbarButton->setText(QApplication::translate("Toolbar", "<", 0, QApplication::UnicodeUTF8));
         Q_UNUSED(Toolbar);
     } // retranslateUi
 
