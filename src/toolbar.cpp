@@ -1,5 +1,4 @@
 #include "toolbar.h"
-#include "ui_toolbar.h"
 
 #include <QPainter>
 
@@ -8,6 +7,8 @@ Toolbar::Toolbar(QWidget *parent) :
     m_ui(new Ui::Toolbar)
 {
     m_ui->setupUi(this);
+
+    connect(getInputAddress(), SIGNAL(returnPressed()), this, SLOT(changeUrl()));
 }
 
 Toolbar::~Toolbar()
@@ -33,7 +34,7 @@ void Toolbar::paintEvent ( QPaintEvent * event )
     painter.drawRect(rectangle);
 }
 
-QToolButton* Toolbar::getHideToolbarButton()
+void Toolbar::changeUrl()
 {
-    return m_ui->hideToolbarButton;
+    emit urlChanged( getInputAddress()->text() );
 }

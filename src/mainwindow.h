@@ -69,6 +69,9 @@ private slots:
     //toolbar visibility control
     void showToolbar();
     void hideToolbar();
+
+    //visit url
+    void visitUrl(QString);
 };
 
 #endif // MAINWINDOW_H

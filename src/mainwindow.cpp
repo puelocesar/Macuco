@@ -43,6 +43,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 
     connect(miniToolbar->getShowToolbarButton(), SIGNAL(clicked()), this, SLOT(showToolbar()));
     connect(toolbar->getHideToolbarButton(), SIGNAL(clicked()), this, SLOT(hideToolbar()));
+
+    connect(toolbar->getBackButton(), SIGNAL(clicked()), this->webView, SLOT(back()));
+    connect(toolbar->getFowardButton(), SIGNAL(clicked()), this->webView, SLOT(forward()));
+    connect(toolbar->getReloadButton(), SIGNAL(clicked()), this->webView, SLOT(reload()));
+
+    connect(toolbar, SIGNAL(urlChanged(QString)), this, SLOT(visitUrl(QString)));
 }
 
 MainWindow::~MainWindow()
@@ -59,6 +65,15 @@ void MainWindow::showLoading()
 void MainWindow::changeUrl(QUrl url)
 {
     currentUrl = url;
+    toolbar->getInputAddress()->setText( url.toString() );
+}
+
+void MainWindow::visitUrl(QString urlString)
+{
+    if (urlString.indexOf("http://") == -1)
+        urlString = "http://" + urlString;
+
+    webView->load(QUrl(urlString));
 }
 
 void MainWindow::hideLoading(bool success)

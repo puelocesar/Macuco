@@ -1,10 +1,10 @@
 /********************************************************************************
-** Form generated from reading ui file 'minifiedtoolbar.ui'
+** Form generated from reading UI file 'minifiedtoolbar.ui'
 **
-** Created: Thu Nov 19 21:18:49 2009
-**      by: Qt User Interface Compiler version 4.5.2
+** Created: Tue Dec 1 13:25:30 2009
+**      by: Qt User Interface Compiler version 4.6.0
 **
-** WARNING! All changes made in this file will be lost when recompiling ui file!
+** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
 #ifndef UI_MINIFIEDTOOLBAR_H
@@ -33,7 +33,7 @@ public:
             MinifiedToolbar->setObjectName(QString::fromUtf8("MinifiedToolbar"));
         MinifiedToolbar->resize(26, 40);
         horizontalLayout = new QHBoxLayout(MinifiedToolbar);
-        horizontalLayout->setMargin(0);
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         showToolbarButton = new QToolButton(MinifiedToolbar);
         showToolbarButton->setObjectName(QString::fromUtf8("showToolbarButton"));
@@ -75,7 +75,6 @@ public:
 "radius: 1.35, stop: 0 #fff, stop: 1 #c2c2c2);\n"
 "}", 0, QApplication::UnicodeUTF8));
         showToolbarButton->setText(QApplication::translate("MinifiedToolbar", ">", 0, QApplication::UnicodeUTF8));
-        Q_UNUSED(MinifiedToolbar);
     } // retranslateUi
 
 };

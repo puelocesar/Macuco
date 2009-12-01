@@ -1,10 +1,10 @@
 /********************************************************************************
-** Form generated from reading ui file 'toolbar.ui'
+** Form generated from reading UI file 'toolbar.ui'
 **
-** Created: Thu Nov 19 21:27:40 2009
-**      by: Qt User Interface Compiler version 4.5.2
+** Created: Tue Dec 1 13:25:30 2009
+**      by: Qt User Interface Compiler version 4.6.0
 **
-** WARNING! All changes made in this file will be lost when recompiling ui file!
+** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
 #ifndef UI_TOOLBAR_H
@@ -133,7 +133,6 @@ public:
         fowardButton->setText(QString());
         reloadButton->setText(QString());
         hideToolbarButton->setText(QApplication::translate("Toolbar", "<", 0, QApplication::UnicodeUTF8));
-        Q_UNUSED(Toolbar);
     } // retranslateUi
 
 };
