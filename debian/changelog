@@ -1,3 +1,16 @@
+macuco (0.2-1) unstable; urgency=low
+
+  * implemented a navigation toolbar
+
+ -- Paulo Cesar <puelocesar@gmail.com>  Tue,  1 Dec 2009 19:45:00 -0300
+
+macuco (0.1-5) unstable; urgency=low
+
+  * implemented open links in new window
+  * fixed horizontal scrollbars
+
+ -- Paulo Cesar <puelocesar@gmail.com>  Sat,  12 Nov 2009 00:54:00 -0300
+
 macuco (0.1-4) unstable; urgency=low
 
   * Zoom with hardware keys

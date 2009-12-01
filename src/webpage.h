@@ -19,9 +19,6 @@ public:
 
         cookieJar = new NetworkCookieJar;
         networkAccessManager()->setCookieJar(cookieJar);
-
-        settings()->setAttribute( QWebSettings::OfflineStorageDatabaseEnabled, true );
-        settings()->setAttribute( QWebSettings::LocalStorageEnabled, true );
     }
 
     void saveCookies()
