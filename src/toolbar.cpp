@@ -20,7 +20,7 @@ void Toolbar::paintEvent ( QPaintEvent * event )
 {
     Q_UNUSED(event);
 
-    QRectF rectangle(-5, 0, 810, 38);
+    QRectF rectangle(-5, 0, 1280, 38);
 
     QPainter painter(this);
 
